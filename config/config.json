@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "postgres",
+    "password": "petMatchDb",
+    "database": "postgres",
+    "host": "petmatchdb.ctvhnmvdp0ui.us-east-2.rds.amazonaws.com",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "postgres",
+    "password": "petMatchDb",
+    "database": "postgres",
+    "host": "petmatchdb.ctvhnmvdp0ui.us-east-2.rds.amazonaws.com",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "postgres",
+    "password": "petMatchDb",
+    "database": "postgres",
+    "host": "petmatchdb.ctvhnmvdp0ui.us-east-2.rds.amazonaws.com",
+    "dialect": "posgres"
+  }
+}
