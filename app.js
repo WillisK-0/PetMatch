@@ -2,6 +2,7 @@
 const express = require("express");
 const app = express();
 const mustacheExpress = require("mustache-express");
+
 // const PORT = process.env.PORT || 8080;
 const models = require("./models");
 const logInRouter = require("./routes/login");
@@ -15,5 +16,6 @@ app.set("view engine", "mustache");
 app.use("/log-in", logInRouter);
 app.use("/home", homeRouter);
 app.listen(3000, () => {
+
   console.log("Server is running...");
 });
