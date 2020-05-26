@@ -1,0 +1,25 @@
+<html>
+<head><meta http-equiv="Content-Security-Policy" content="default-src 
+    'self'">
+</head>
+
+<body>
+    <h1>View all Cats and Dogs in Houston area</h1>
+    <ul>
+
+    {{#pets}}
+
+     <li>
+    <form method="POST" action="/houstonPets/houstonPets">
+        <label>{{name}}</label>
+        <label>{{id}}</label>
+        <label>{{organization_id}}</label>
+    </form>
+    </li>
+
+    {{/pets}}
+    </ul>
+
+
+</body>
+</html>

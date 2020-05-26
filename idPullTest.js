@@ -1,11 +1,10 @@
-const org = "RI77";
-const status = "adoptable";
 const fetch = require("node-fetch");
 const key = "fzJGFxrKg3dAbPMgK8AYlsmtK2rKB27lAzmG0hR8ROxJnBro39";
 const secret = "nEBZNLBFzxdlaSNkPNrDafLKKrREtKhSLan6OeRC";
 let data = {};
 let token, tokenType, expires;
 
+//Get token
 //------------------
 
 let getOAuth = function () {
@@ -36,10 +35,11 @@ let getOAuth = function () {
     });
 };
 
+//Gets Houston, TX results
 //----------------------
 
 let getPets = function () {
-  return fetch("https://api.petfinder.com/v2/animals?location=77070", {
+  return fetch("https://api.petfinder.com/v2/animals?location=Houston, TX", {
     headers: {
       Authorization: tokenType + " " + token,
       "Content-Type": "application/x-www-form-urlencoded",
@@ -58,7 +58,7 @@ let getPets = function () {
 
 //-------------------------
 
-//get a token and fetch pets
+//validate token and fetch pets
 let makeCall = function () {
   if (!expires || expires - new Date().getTime() < 1) {
     console.log("new call");
