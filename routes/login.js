@@ -7,6 +7,27 @@ router.get("/", (req, res) => {
   res.render("login");
 });
 
+router.post("/", (req, res) => {
+  let userName = req.body.userName;
+  let passWord = req.body.userName;
+
+  models.User.findOne({
+    where: {
+      username: userName,
+    },
+  }).then((user) => {
+    if (user == null) {
+      res.render("login", { message: "Username does not exist" });
+    } else {
+      if (bcrypt.compare(passWord, user.password)) {
+        res.redirect("/home");
+      } else {
+        res.render("login", { message: "Username or password is incorrect." });
+      }
+    }
+  });
+});
+
 router.get("/register", (req, res) => {
   res.render("register");
 });
