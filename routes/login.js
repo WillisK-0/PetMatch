@@ -11,10 +11,6 @@ router.post("/", (req, res) => {
   let userName = req.body.userName;
   let passWord = req.body.userName;
 
-  if (req.session) {
-    req.session.user = userName;
-  }
-
   models.User.findOne({
     where: {
       username: userName,
@@ -24,13 +20,24 @@ router.post("/", (req, res) => {
       res.render("login", { message: "Username does not exist" });
     } else {
       if (bcrypt.compare(passWord, user.password)) {
-        res.redirect("/home");
+        if (req.session) {
+          req.session.user = { user: userName };
+          res.redirect("/home");
+        } else {
+          res.render("login");
+        }
       } else {
         res.render("login", { message: "Username or password is incorrect." });
       }
     }
   });
 });
+
+router.post("/sign-out", (req, res) => {
+  req.session.destroy();
+  res.redirect("/home");
+});
+
 // registering a new user
 router.get("/register", (req, res) => {
   res.render("register");

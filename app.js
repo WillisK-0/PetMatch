@@ -2,7 +2,7 @@
 const express = require("express");
 const app = express();
 const mustacheExpress = require("mustache-express");
-var session = require("express-session");
+const session = require("express-session");
 
 // session middleWare
 app.use(
@@ -24,6 +24,7 @@ app.set("view engine", "mustache");
 
 app.use("/log-in", logInRouter);
 app.use("/home", homeRouter);
+
 app.listen(3000, () => {
   console.log("Server is running...");
 });
