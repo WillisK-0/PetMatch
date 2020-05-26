@@ -2,14 +2,22 @@ const express = require("express");
 const router = express();
 const bcrypt = require("bcrypt");
 const models = require("../models");
+const session = require("express-session");
 
+router.use(
+  session({
+    secret: "keyboard cat",
+    resave: false,
+    saveUninitialized: true,
+  })
+);
 router.get("/", (req, res) => {
   res.render("login");
 });
 // user sign in and password authentication
 router.post("/", (req, res) => {
   let userName = req.body.userName;
-  let passWord = req.body.userName;
+  let passWord = req.body.passWord;
 
   models.User.findOne({
     where: {
@@ -19,16 +27,16 @@ router.post("/", (req, res) => {
     if (user == null) {
       res.render("login", { message: "Username does not exist" });
     } else {
-      if (bcrypt.compare(passWord, user.password)) {
-        if (req.session) {
-          req.session.user = { user: userName };
+      bcrypt.compare(passWord, user.dataValues.password, (err, response) => {
+        if (response) {
+          console.log("passwords match");
+          req.session.user = { user: user.dataValues.username };
           res.redirect("/home");
         } else {
-          res.render("login");
+          console.log("error");
+          res.render("login", { message: "Incorrect password" });
         }
-      } else {
-        res.render("login", { message: "Username or password is incorrect." });
-      }
+      });
     }
   });
 });
