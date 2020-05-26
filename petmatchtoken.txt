@@ -1,0 +1,17 @@
+token {
+  token_type: 'Bearer',
+  expires_in: 3600,
+  access_token: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJmekpHRnhyS2czZEFiUE1nSzhBWWxzbXRLMnJLQjI3bEF6bUcwaFI4Uk94Sm5Ccm8zOSIsImp0aSI6ImQ3OGRkNmExYzljYmE0ZWFlN2ExODY0MGUyYWVhZDJmN2YxYTdkNjkzZTMwNDE0NWU1MTVlOWE2NWY2NGRhNTlhODQ5MWI3YzU1NDEwMjBlIiwiaWF0IjoxNTkwNTAxNTUwLCJuYmYiOjE1OTA1MDE1NTAsImV4cCI6MTU5MDUwNTE1MCwic3ViIjoiIiwic2NvcGVzIjpbXX0.HZE69VymPy8QcJPNLCgLnUh7a26DbQynK1Y8CsghLh_cECIvKo4Tfq8m6zS_QZqGQHTchzyuZQ19bobknZWxYxKhD57QS2z7VFNJDttykNvSVYt-hPA-C-HtF9mvuno5DvLrDT41j7d6VXPZllhzg6IloUVpUTXZdLO8BnwnHkI9_DOwajJ2tH-x-TOQM7Abshufj55NtbtwG7LHAgmYqX36t_8_Z0SYgtI1VyYh1QkQMD3NWaLMNDocAjgdXcQH9JHbhT1w27UqShnC-tByIglbaRmRprRK0OBhDc7D3WJXU-JYXdF6zZ8jZV3RvpqpPp6aBMJNydYaiR8GZr8jFQ'
+}
+
+Breaking this down:
+
+The "token_type" value of "Bearer" means the server will not expect other identification along with the token; it is sufficient alone.
+The "expires_in" gives the time in seconds the token may be used; after this, your system must request a new one and use that.
+The "access_token" is the token itself. You’ll need to have your system store this as a variable and include it in the header of every API request until it expires and you request another.
+
+
+NEW SECRET!!!!
+
+nEBZNLBFzxdlaSNkPNrDafLKKrREtKhSLan6OeRC
+
