@@ -6,10 +6,12 @@ const mustacheExpress = require("mustache-express");
 const models = require("./models");
 const logInRouter = require("./routes/login");
 const homeRouter = require("./routes/home");
+const path = require("path");
+const VIEWS_PATH = path.join(__dirname, "/views");
 app.use(express.urlencoded());
 
-app.engine("mustache", mustacheExpress());
-app.set("views", "./views");
+app.engine("mustache", mustacheExpress(VIEWS_PATH + "/partials", ".mustache"));
+app.set("views", VIEWS_PATH);
 app.set("view engine", "mustache");
 
 app.use("/log-in", logInRouter);
