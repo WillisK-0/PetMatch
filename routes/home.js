@@ -2,7 +2,9 @@ const express = require("express");
 const router = express();
 
 router.get("/", (req, res) => {
-  res.render("home");
+  let user = req.session.user;
+
+  res.render("home", user);
 });
 
 router.get("/pet-details", (req, res) => {

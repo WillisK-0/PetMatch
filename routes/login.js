@@ -6,10 +6,14 @@ const models = require("../models");
 router.get("/", (req, res) => {
   res.render("login");
 });
-
+// user sign in and password authentication
 router.post("/", (req, res) => {
   let userName = req.body.userName;
   let passWord = req.body.userName;
+
+  if (req.session) {
+    req.session.user = userName;
+  }
 
   models.User.findOne({
     where: {
@@ -27,7 +31,7 @@ router.post("/", (req, res) => {
     }
   });
 });
-
+// registering a new user
 router.get("/register", (req, res) => {
   res.render("register");
 });
@@ -36,13 +40,27 @@ router.post("/register", (req, res) => {
   let userName = req.body.userName;
   let passWord = bcrypt.hashSync(req.body.passWord, 10);
 
-  let user = models.User.build({
-    username: userName,
-    password: passWord,
-  });
-  user.save().then((savedUser) => {
-    res.redirect("/log-in");
+  models.User.findOne({
+    where: {
+      username: userName,
+    },
+  }).then((user) => {
+    if (user == null) {
+      let newUser = models.User.build({
+        username: userName,
+        password: passWord,
+      });
+      newUser.save().then((savedUser) => {
+        res.redirect("/log-in");
+      });
+    } else {
+      res.render("register", { message: "Username already exists" });
+    }
   });
 });
+
+function authenticate(req, res, next) {
+  console.log("AUTHENTICATE");
+}
 
 module.exports = router;
