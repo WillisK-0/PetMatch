@@ -4,16 +4,30 @@ const app = express();
 const mustacheExpress = require("mustache-express");
 //const PORT = process.env.PORT || 8080;
 
-const houstonPetsRouter = require("./routes/houstonPets");
-const loginRouter = require("./routes/login");
-
 global.pets = [];
 
+const session = require("express-session");
+
+// session middleWare
+app.use(
+  session({
+    secret: "keyboard cat",
+    resave: false,
+    saveUninitialized: true,
+  })
+);
+
+// const PORT = process.env.PORT || 8080;
+const logInRouter = require("./routes/login");
+const homeRouter = require("./routes/home");
+const path = require("path");
+const houstonPetsRouter = require("./routes/houstonPets");
+const VIEWS_PATH = path.join(__dirname, "/views");
 app.use(express.urlencoded());
 app.use(express.json());
 
-app.engine("mustache", mustacheExpress());
-app.set("views", "./views");
+app.engine("mustache", mustacheExpress(VIEWS_PATH + "/partials", ".mustache"));
+app.set("views", VIEWS_PATH);
 app.set("view engine", "mustache");
 
 app.use("css/version-1", express.static("css"));
