@@ -6,7 +6,6 @@ body {
 
 @media (min-width: 600px) {
   #groupPic {
-    height: 40%;
     width: 100%;
   }
 }
@@ -17,12 +16,9 @@ body {
   }
 } */
 
-@media (max-width: 600px) {
+@media (max-width: 400px) {
   #groupPic {
     display: none !important;
-  }
-  body {
-    background: red;
   }
 }
 
@@ -33,10 +29,22 @@ body {
   border: 2px solid blue;
   align-items: center;
   justify-content: space-evenly;
-  color: blue;
+  color: darkslategrey;
   width: 30%;
   margin: 20%;
   margin-top: 2%;
   height: 40%;
   border-radius: 10px;
+}
+
+.emptyButton {
+  background-color: rgba(100, 148, 237, 0.068);
+  color: white;
+  border: 2px solid white;
+  border-radius: 3px;
+  width: -webkit-fill-available;
+}
+
+.emptyButton:hover {
+  background-color: rgb(43, 114, 245);
 }
