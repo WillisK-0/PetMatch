@@ -34,6 +34,7 @@ app.use(
 const logInRouter = require("./routes/login");
 const homeRouter = require("./routes/home");
 const path = require("path");
+const houstonPetsRouter = require("./routes/houstonPets");
 const VIEWS_PATH = path.join(__dirname, "/views");
 app.use(express.urlencoded());
 app.use(express.json());
