@@ -1,16 +1,21 @@
 <html>
 
-<head></head>
+<head>{{> navTop}}</head>
 
 <body>
+{{> menu}}
 <h1>Sign in</h1>
 
-<form method='POST' action=''>
+<form method='POST' action='/log-in'>
 <input type='text' placeHolder='Username' name='userName'>
 <input type='password' placeHolder='Password' name='passWord'>
 <button>Sign in</button>
 </form>
-</body>
 
+<h4><a href='http://localhost:3000/log-in/register'>Not a member? Click to register a new account</a></h4>
+
+{{> navBottom}}
+</body>
+{{message}}
 
 </html>
