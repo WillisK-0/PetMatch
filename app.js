@@ -4,7 +4,8 @@ const app = express();
 const mustacheExpress = require("mustache-express");
 
 const session = require("express-session");
-
+app.use(express.static("css"));
+app.use(express.static("images"));
 // session middleWare
 app.use(
   session({
@@ -13,7 +14,6 @@ app.use(
     saveUninitialized: true,
   })
 );
-
 
 // const PORT = process.env.PORT || 8080;
 const logInRouter = require("./routes/login");
@@ -30,6 +30,5 @@ app.use("/log-in", logInRouter);
 app.use("/home", homeRouter);
 
 app.listen(3000, () => {
-
   console.log("Server is running...");
 });
