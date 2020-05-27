@@ -1,0 +1,42 @@
+body {
+  background-color: rgb(255, 255, 234);
+  color: rgb(148, 116, 89);
+  text-align: -webkit-center;
+}
+
+@media (min-width: 600px) {
+  #groupPic {
+    height: 40%;
+    width: 100%;
+  }
+}
+
+/* @media screen and (device-width: 320px) and (device-height: 640px) and (-webkit-device-pixel-ratio: 2) {
+    #groupPic {
+      display: none;
+    }
+  } */
+
+@media (max-width: 600px) {
+  #groupPic {
+    display: none !important;
+  }
+  body {
+    background: red;
+  }
+}
+
+#logInBox {
+  background: rgba(110, 179, 236, 0.918);
+  display: flex;
+  flex-direction: column;
+  border: 2px solid blue;
+  align-items: center;
+  justify-content: space-evenly;
+  color: blue;
+  width: 30%;
+  margin: 20%;
+  margin-top: 2%;
+  height: 40%;
+  border-radius: 10px;
+}
