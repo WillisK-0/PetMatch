@@ -2,25 +2,14 @@
 const express = require("express");
 const app = express();
 const mustacheExpress = require("mustache-express");
-const session = require("express-session");
 //const PORT = process.env.PORT || 8080;
-
-app.use(
-  session({
-    secret: "keyboard cat",
-    resave: false,
-    saveUninitialized: true,
-  })
-);
-
-const houstonPetsRouter = require("./routes/houstonPets");
-const loginRouter = require("./routes/login");
 
 global.pets = [];
 
 const session = require("express-session");
 app.use(express.static("css"));
 app.use(express.static("images"));
+
 // session middleWare
 app.use(
   session({
@@ -48,8 +37,11 @@ app.use(express.static("public"));
 
 app.get("/houstonPets", (req, res) => {
   getPets((response) => {
-    //console.log(response.animals[0].name);
-    res.render("houstonPets", { pets: response.animals });
+    // console.log(JSON.stringify(response.animals[0].name));
+    // console.log(response.animals[0].photos);
+    // console.log(response.animals[1]._links);
+    let petInfo = { pets: response.animals };
+    res.render("houstonPets", petInfo);
   });
 });
 
@@ -97,14 +89,16 @@ let getOAuth = function () {
 //Gets Houston, TX results
 //----------------------
 
-function fetchWithDefaultHeaders(url) {
-  return fetch(url, {
-    headers: {
-      Authorization: tokenType + " " + token,
-      "Content-Type": "application/x-www-form-urlencoded",
-    },
-  });
-}
+// function fetchWithDefaultHeaders(url) {
+//   return fetch(url, {
+//     headers: {
+//       Authorization: tokenType + " " + token,
+//       "Content-Type": "application/x-www-form-urlencoded",
+//     },
+//   });
+// }
+
+// ?location=Houston, TX (params for fetch)
 
 let getPets = function (callback) {
   fetch("https://api.petfinder.com/v2/animals?location=Houston, TX", {
