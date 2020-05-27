@@ -20,9 +20,25 @@ router.get("/pet-details", (req, res) => {
   res.render("petDetails");
 });
 
-router.get("/user", (req, res) => {
+router.get("/user", authenticate, (req, res) => {
   let user = req.session.user;
   res.render("user", user);
 });
 
+router.get("/favorites", authenticate, (req, res) => {
+  res.render("favorites");
+});
+
+function authenticate(req, res, next) {
+  //   req.session.isAuthenticated = true;
+  if (req.session) {
+    if (req.session.user) {
+      next();
+    } else {
+      res.redirect("/log-in");
+    }
+  } else {
+    res.redirect("/log-in");
+  }
+}
 module.exports = router;

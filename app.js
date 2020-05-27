@@ -4,7 +4,8 @@ const app = express();
 const mustacheExpress = require("mustache-express");
 
 const session = require("express-session");
-
+app.use(express.static("css"));
+app.use(express.static("images"));
 // session middleWare
 app.use(
   session({
