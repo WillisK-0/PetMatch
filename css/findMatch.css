@@ -1,0 +1,38 @@
+body {
+  background-color: rgb(255, 255, 234);
+  color: rgb(148, 116, 89);
+  text-align: -webkit-center;
+}
+
+#quiz {
+  border: 2px solid blue;
+  width: 40%;
+  height: fit-content;
+  border-radius: 10px;
+}
+
+#q1 {
+  margin-top: 10px;
+}
+
+#q2 {
+  margin-top: 20px;
+}
+
+#q3 {
+  margin-top: 20px;
+}
+#q4 {
+  margin-top: 20px;
+}
+
+#animalPic {
+  width: 100%;
+}
+#imageWrapper {
+  margin-top: 30px;
+}
+
+#radioLabel {
+  padding: 5px;
+}

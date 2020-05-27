@@ -37,6 +37,17 @@ router.get("/find-match", (req, res) => {
   res.render("findMatch");
 });
 
+router.post("/find-match", (req, res) => {
+  let q1 = req.body.catDog;
+  let q2 = req.body.indoorOutdoor;
+  let q3 = req.body.sml;
+  let q4 = req.body.checks;
+  console.log(q1);
+  console.log(q2);
+  console.log(q3);
+  console.log(q4);
+});
+
 router.get("/cats", (req, res) => {
   res.render("cats");
 });

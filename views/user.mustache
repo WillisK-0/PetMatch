@@ -1,14 +1,23 @@
 <html>
 
 <head>{{> navTop}}
+<link rel='stylesheet' href='/user.css'>
 </head>
 
 <body>
 
 {{> menu}}
-<h1>Hello, {{user}}</h1>
 
+<div>
+<h1>Account Details</h1>
+<ul>
+<li><h3>Username: {{user}}</h3></li>
+<li><h3>First name: {{firstName}}</h3></li>
+<li><h3>Last name: {{lastName}}</h3></li>
 
+</ul>
+
+</div>
 
 
 
