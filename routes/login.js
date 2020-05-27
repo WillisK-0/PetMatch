@@ -76,6 +76,15 @@ router.post("/register", (req, res) => {
 
 function authenticate(req, res, next) {
   console.log("AUTHENTICATE");
+  if (req.session) {
+    if (req.session.isAuthenticated) {
+      next();
+    } else {
+      res.redirect("/");
+    }
+  } else {
+    res.redirect("/");
+  }
 }
 
 module.exports = router;
