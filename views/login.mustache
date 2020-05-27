@@ -1,0 +1,28 @@
+<html>
+
+<head>{{> navTop}} 
+<link rel='stylesheet' href='/log-in.css'></head>
+
+<body>
+{{> menu}}
+<img id='groupPic' src='group-animation.png'>
+<p style=text-align:center;>Sign into your account to view favorites, donate, and more!<p>
+<div id='logInBox'>
+<h1>Sign in</h1>
+
+<form method='POST' action='/log-in'>
+<input type='text' placeHolder='Username' name='userName'> <br>
+<p>
+<input type='password' placeHolder='Password' name='passWord'> <br>
+<p>
+<button>Sign in</button>
+</form>
+
+<p>Not a user? <a href='http://localhost:3000/log-in/register'>Click here to register!</a>
+</div>
+
+{{> navBottom}}
+</body>
+{{message}}
+
+</html>
