@@ -2,7 +2,16 @@
 const express = require("express");
 const app = express();
 const mustacheExpress = require("mustache-express");
+const session = require("express-session");
 //const PORT = process.env.PORT || 8080;
+
+app.use(
+  session({
+    secret: "keyboard cat",
+    resave: false,
+    saveUninitialized: true,
+  })
+);
 
 const houstonPetsRouter = require("./routes/houstonPets");
 const loginRouter = require("./routes/login");
@@ -19,7 +28,14 @@ app.set("view engine", "mustache");
 app.use("css/version-1", express.static("css"));
 app.use(express.static("public"));
 
-app.use("/houstonPets", houstonPetsRouter);
+app.get("/houstonPets", (req, res) => {
+  getPets((response) => {
+    //console.log(response.animals[0].name);
+    res.render("houstonPets", { pets: response.animals });
+  });
+});
+
+//app.use("/houstonPets", houstonPetsRouter);
 // app.use("/login", logInRouter);
 // app.use("/home", homeRouter);
 
@@ -63,7 +79,27 @@ let getOAuth = function () {
 //Gets Houston, TX results
 //----------------------
 
+function fetchWithDefaultHeaders(url) {
+  return fetch(url, {
+    headers: {
+      Authorization: tokenType + " " + token,
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+  });
+}
+
 let getPets = function (callback) {
+  fetch("https://api.petfinder.com/v2/animals?location=Houston, TX", {
+    headers: {
+      Authorization: tokenType + " " + token,
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => callback(data))
+    .catch((error) => console.log(error));
+
+  /*
   return (
     fetch("https://api.petfinder.com/v2/animals?location=Houston, TX", {
       headers: {
@@ -81,7 +117,7 @@ let getPets = function (callback) {
       .catch(function (err) {
         console.log("something went wrong", err);
       })
-  );
+  ); */
 };
 
 //-------------------------
@@ -109,6 +145,8 @@ let makeCall = function () {
 
 // makeCall();
 // ------------------
+
+getOAuth();
 
 app.listen(3000, () => {
   console.log("Server is running...");
