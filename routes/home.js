@@ -29,6 +29,18 @@ router.get("/favorites", authenticate, (req, res) => {
   res.render("favorites");
 });
 
+router.get("/dogs", (req, res) => {
+  res.render("dogs");
+});
+
+router.get("/find-match", (req, res) => {
+  res.render("findMatch");
+});
+
+router.get("/cats", (req, res) => {
+  res.render("cats");
+});
+
 function authenticate(req, res, next) {
   //   req.session.isAuthenticated = true;
   if (req.session) {
