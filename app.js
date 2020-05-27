@@ -24,6 +24,7 @@ const logInRouter = require("./routes/login");
 const homeRouter = require("./routes/home");
 const path = require("path");
 const houstonPetsRouter = require("./routes/houstonPets");
+const sortByBreedRouter = require("./routes/sortByBreed");
 const VIEWS_PATH = path.join(__dirname, "/views");
 app.use(express.urlencoded());
 app.use(express.json());
@@ -41,6 +42,13 @@ app.get("/houstonPets", (req, res) => {
     // console.log(response.animals[0].photos);
     // console.log(response.animals[1]._links);
     let petInfo = { pets: response.animals };
+    res.render("houstonPets", petInfo);
+  });
+});
+
+app.get("/sortByBreed", (req, res) => {
+  getPets((response) => {
+    let petInfo = { pets: response.animals.breeds };
     res.render("houstonPets", petInfo);
   });
 });

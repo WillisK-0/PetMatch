@@ -10,7 +10,7 @@
     {{#pets}}
     <div>
         <li>
-        <form method="POST" action="/houstonPets/houstonPets">
+        <form method="POST" action="/sortByBreed">
             <label>{{name}}</label>
             <label>{{id}}</label>
             <label>{{organization_id}}</label>
@@ -18,26 +18,5 @@
             
         </form>
         </li>
-        {{#breeds}}
-            <label>{{primary}}, {{secondary}}, {{mixed}}, {{unknown}}</label>
-        {{/breeds}}
-
-
-        {{#photos}}
-
-            <img src={{medium}} />
-            
-        {{/photos}}
-
-        {{#primary_photo_cropped}}
-
-            <img src={{medium}} />
-
-        {{/primary_photo_cropped}}
     </div>
     {{/pets}}
-    </ul>
-
-
-</body>
-</html>
