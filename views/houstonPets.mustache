@@ -1,43 +1,51 @@
 <html>
 <head>
+{{> navTop}}
+<link rel='stylesheet' href='/home.css'>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <meta http-equiv="Content-Security-Policy" content="default-src *;    img-src * 'self' data: https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' *;    style-src  'self' 'unsafe-inline' *">
 </head>
 
 <body>
-    <h1>View all Cats and Dogs in Houston area</h1>
+{{> menu}}
+    <h1>View Cats and Dogs in Houston area</h1>
     <ul>
 
     {{#pets}}
     <div>
         <li>
         <form method="POST" action="/houstonPets/houstonPets">
-            <label>{{name}}</label>
-            <label>{{id}}</label>
-            <label>{{organization_id}}</label>
-            <label>{{type}}</label>
-            
-        </form>
-        </li>
-        {{#breeds}}
-            <label>{{primary}}, {{secondary}}, {{mixed}}, {{unknown}}</label>
-        {{/breeds}}
-
-
-        {{#photos}}
-
-            <img src={{medium}} />
-            
-        {{/photos}}
-
         {{#primary_photo_cropped}}
 
             <img src={{medium}} />
 
         {{/primary_photo_cropped}}
+
+        <p>        
+        
+            <label>Name: {{name}}</label>
+            <label>Age: {{age}}</label>
+            <label><input type="hidden" /> Type: {{type}} </label>
+            
+            {{#breeds}}
+            <label>Breed: {{primary}}, Mixed: {{mixed}}</label>
+            {{/breeds}}
+        <p>
+        </form>
+        </li>
+       
+        
     </div>
     {{/pets}}
     </ul>
 
-
+{{> navBottom}}
 </body>
 </html>
+
+{{#photos}}
+
+            <img src={{medium}} />
+            
+    {{/photos}}
