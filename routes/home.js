@@ -23,6 +23,11 @@ router.get("/pet-details", (req, res) => {
   res.render("petDetails");
 });
 
+router.get("/pet-details/:id", (req, res) => {
+  let petId = req.params.id;
+  res.render("petDetails", { petId: petId });
+});
+
 router.get("/user", authenticate, (req, res) => {
   let user = req.session.user;
   res.render("user", user);

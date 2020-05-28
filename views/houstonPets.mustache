@@ -1,7 +1,7 @@
 <html>
 <head>
 {{> navTop}}
-<link rel='stylesheet' href='/home.css'>
+<link rel='stylesheet' href='/houstonPets.css'>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta http-equiv="Content-Security-Policy" content="default-src *;    img-src * 'self' data: https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' *;    style-src  'self' 'unsafe-inline' *">
@@ -9,36 +9,51 @@
 
 <body>
 {{> menu}}
-    <h1>View Cats and Dogs in Houston area</h1>
-    <ul>
+    <img id='banner' src='https://waifanimals.org/wp-content/uploads/2017/03/all-animals.svg'>
 
+    <h1>Furbabies in the Houston area</h1>
+    <p>Animal shelters and rescue groups are brimming with happy, healthy pets just waiting for someone to take them home. 
+    Most shelter pets wound up there because of a human problem like a move or a divorce,
+    not because the animals did anything wrong. Many are already house-trained and used to living with families.
+    Save a life, adopt!</p>
+    
+    <div id='displayPetCards'>
     {{#pets}}
-    <div>
-        <li>
-        <form method="POST" action="/houstonPets/houstonPets">
+    <div class='petCard'>
+        
+        <form method="POST" action="/houstonPets">
         {{#primary_photo_cropped}}
-
-            <img src={{medium}} />
+        
+            <a href='http://localhost:3000/home/pet-details/{{id}}'><img class='petPic' src="{{medium}}"/></a>
 
         {{/primary_photo_cropped}}
 
         <p>        
         
+<<<<<<< HEAD
             <label>Name: {{name}}</label>
             <label>Age: {{age}}</label>
             <input type="hidden" id="type" name="type" value="Type: {{type}}" />
+=======
+            <label><strong>Name:</strong> {{name}}</label> <br>
+            <label><strong>Age:</strong> {{age}}</label> <br>
+            <input type="hidden" id="type" name="type" value="{{type}}"/>
+            <input type="hidden" id="petId" name="petId" value="{{id}}"/>
+
+>>>>>>> master
             
             {{#breeds}}
-            <label>Breed: {{primary}}, Mixed: {{mixed}}</label>
+            <label><strong>Breed:</strong> {{primary}}, <strong>Mixed:</strong> {{mixed}}</label><br> 
             {{/breeds}}
         <p>
         </form>
-        </li>
+        
        
         
     </div>
     {{/pets}}
-    </ul>
+    </div>
+    
 
 {{> navBottom}}
 </body>

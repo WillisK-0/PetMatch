@@ -31,6 +31,8 @@ const VIEWS_PATH = path.join(__dirname, "/views");
 app.use(express.urlencoded());
 app.use(express.json());
 
+app.use("/log-in", logInRouter);
+app.use("/home", homeRouter);
 app.engine("mustache", mustacheExpress(VIEWS_PATH + "/partials", ".mustache"));
 app.set("views", VIEWS_PATH);
 app.set("view engine", "mustache");
@@ -43,7 +45,24 @@ app.get("/houstonPets", (req, res) => {
     // console.log(JSON.stringify(response.animals[0].name));
     // console.log(response.animals[0].photos);
     // console.log(response.animals[1]._links);
-    let petInfo = { pets: response.animals };
+    const petsArray = response.animals.map((animal) => {
+      const photoObject = animal.primary_photo_cropped;
+      const image = photoObject ? photoObject.medium : "sorry";
+      // console.log(image);
+      const placeHolderUrl =
+        animal.type === "Dog"
+          ? "https://i.pinimg.com/originals/aa/91/2d/aa912de6d6fe70b5ccd0c8b9fc7a4f26.jpg"
+          : "https://www.pngkit.com/png/detail/159-1598700_kitty-clipart-anime-cat-cute-cat-clip-art.png";
+      return {
+        ...animal,
+        primary_photo_cropped: photoObject
+          ? photoObject
+          : {
+              medium: placeHolderUrl,
+            },
+      };
+    });
+    let petInfo = { pets: petsArray };
     res.render("houstonPets", petInfo);
   });
 });
