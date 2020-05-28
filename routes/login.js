@@ -30,7 +30,11 @@ router.post("/", (req, res) => {
       bcrypt.compare(passWord, user.dataValues.password, (err, response) => {
         if (response) {
           console.log("passwords match");
-          req.session.user = { user: user.dataValues.username };
+          req.session.user = {
+            user: user.dataValues.username,
+            firstName: user.dataValues.firstname,
+            lastName: user.dataValues.lastname,
+          };
           res.redirect("/home");
         } else {
           console.log("error");
@@ -54,7 +58,9 @@ router.get("/register", (req, res) => {
 router.post("/register", (req, res) => {
   let userName = req.body.userName;
   let passWord = bcrypt.hashSync(req.body.passWord, 10);
-
+  let firstName = req.body.firstName;
+  let lastName = req.body.lastName;
+  console.log(firstName);
   models.User.findOne({
     where: {
       username: userName,
@@ -64,6 +70,8 @@ router.post("/register", (req, res) => {
       let newUser = models.User.build({
         username: userName,
         password: passWord,
+        firstname: firstName,
+        lastname: lastName,
       });
       newUser.save().then((savedUser) => {
         res.redirect("/log-in");
