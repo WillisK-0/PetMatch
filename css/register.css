@@ -10,12 +10,6 @@ body {
   }
 }
 
-/* @media screen and (device-width: 320px) and (device-height: 640px) and (-webkit-device-pixel-ratio: 2) {
-  #groupPic {
-    display: none;
-  }
-} */
-
 @media (max-width: 400px) {
   #groupPic {
     display: none !important;
@@ -35,6 +29,8 @@ body {
   margin-top: 2%;
   height: 40%;
   border-radius: 10px;
+  min-width: fit-content;
+  padding: 10px;
 }
 
 .emptyButton {
