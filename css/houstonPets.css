@@ -4,6 +4,19 @@ body {
   text-align: center;
 }
 
+@media (max-width: 401px) {
+  #banner {
+    width: 100%;
+    padding-top: 5px;
+  }
+}
+
+@media (max-width: 400px) {
+  #banner {
+    display: none !important;
+  }
+}
+
 #displayPetCards {
   display: flex;
   flex-direction: row;
@@ -12,9 +25,9 @@ body {
 }
 
 .petCard {
-  border: solid 3px blue;
+  border: solid 1px blue;
   border-radius: 5px;
-  background: rgba(100, 148, 237, 0.63);
+  background: rgba(100, 148, 237, 0.062);
   width: min-content;
   margin: 10px;
   margin-right: 2px;
@@ -25,7 +38,7 @@ body {
 }
 
 .petCard:hover {
-  background: cornflowerblue;
+  background: rgba(100, 148, 237, 0.678);
   color: white;
   box-shadow: 0 5px 25px rgba(255, 58, 44, 0.562);
 }
