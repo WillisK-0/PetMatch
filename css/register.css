@@ -33,6 +33,15 @@ body {
   padding: 10px;
 }
 
+#logInBox input {
+  padding: 3px;
+  margin-top: 5px;
+}
+
+#logInBox button {
+  margin-top: 5px;
+}
+
 .emptyButton {
   background-color: rgba(100, 148, 237, 0.068);
   color: white;
