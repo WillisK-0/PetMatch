@@ -9,12 +9,12 @@ router.get("/", (req, res) => {
     req.session.tokenType = newToken.tokenType;
     req.session.token = newToken.token;
     getPets(newToken.token, newToken.tokenType, (data) => {
-      res.render("houstonPets", data);
+      res.render("cats", data);
     });
   });
 });
 
-router.post("/houstonPets", (req, res) => {
+router.post("/cats", (req, res) => {
   let id = req.body.id;
   let organization_id = req.body.organization_id;
   let name = name;
@@ -23,7 +23,7 @@ router.post("/houstonPets", (req, res) => {
 
   pets.push(pet);
 
-  res.render("houstonPets", { petID: id });
+  res.render("cats", { petID: id });
 });
 
 module.exports = router;

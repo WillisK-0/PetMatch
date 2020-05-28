@@ -1,14 +1,54 @@
 <html>
 
+<head>
+{{> navTop}}
+<link rel='stylesheet' href='/houstonPets.css'>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<head>{{>navTop}}</head>
+    <meta http-equiv="Content-Security-Policy" content="default-src *;    img-src * 'self' data: https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' *;    style-src  'self' 'unsafe-inline' *">
+</head>
 
 <body>
 {{> menu}}
-<h1>Cats page</h1>
+    <img id='banner' src='https://waifanimals.org/wp-content/uploads/2017/03/all-animals.svg'>
 
+    <h1>Cats in the Houston area</h1>
+    <p>Animal shelters and rescue groups are brimming with happy, healthy pets just waiting for someone to take them home. 
+    Most shelter pets wound up there because of a human problem like a move or a divorce,
+    not because the animals did anything wrong. Many are already house-trained and used to living with families.
+    Save a life, adopt!</p>
+    
+    <div id='displayPetCards'>
+    {{#pets}}
+    <div class='petCard'>
+        
+        <form method="POST" action="/cats">
+        {{#primary_photo_cropped}}
+        
+            <a href='http://localhost:3000/home/pet-details/{{id}}'><img class='petPic' src="{{medium}}"/></a>
 
+        {{/primary_photo_cropped}}
 
+        <p>        
+        
+            <label><strong>Name:</strong> {{name}}</label> <br>
+            <label><strong>Age:</strong> {{age}}</label> <br>
+            <input type="hidden" id="type" name="type" value="{{type}}"/>
+            <input type="hidden" id="petId" name="petId" value="{{id}}"/>
+
+            
+            {{#breeds}}
+            <label><strong>Breed:</strong> {{primary}}, <strong>Mixed:</strong> {{mixed}}</label><br> 
+            {{/breeds}}
+        <p>
+        </form>
+        
+       
+        
+    </div>
+    {{/pets}}
+    </div>
+    
 
 {{> navBottom}}
 </body>
