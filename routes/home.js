@@ -17,7 +17,8 @@ router.get("/", (req, res) => {
 });
 
 router.get("/pet-details/:id", (req, res) => {
-  res.render("petDetails");
+  let petId = req.params.id;
+  res.render("petDetails", { petId: petId });
 });
 
 router.get("/user", authenticate, (req, res) => {

@@ -38,7 +38,7 @@ body {
 }
 
 .petCard:hover {
-  background: rgba(100, 148, 237, 0.678);
+  background: rgba(100, 148, 237, 0.596);
   color: white;
   box-shadow: 0 5px 25px rgba(255, 58, 44, 0.562);
 }
