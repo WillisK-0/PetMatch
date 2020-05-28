@@ -43,7 +43,7 @@ app.get("/houstonPets", (req, res) => {
     const petsArray = response.animals.map((animal) => {
       const photoObject = animal.primary_photo_cropped;
       const image = photoObject ? photoObject.medium : "sorry";
-      console.log(image);
+      // console.log(image);
       const placeHolderUrl =
         animal.type === "Dog"
           ? "https://i.pinimg.com/originals/aa/91/2d/aa912de6d6fe70b5ccd0c8b9fc7a4f26.jpg"

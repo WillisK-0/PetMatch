@@ -1,6 +1,7 @@
 body {
   background-color: rgb(255, 255, 234);
   color: rgb(148, 116, 89);
+  text-align: center;
 }
 
 #displayPetCards {
@@ -12,11 +13,21 @@ body {
 
 .petCard {
   border: solid 3px blue;
+  border-radius: 5px;
+  background: rgba(100, 148, 237, 0.63);
   width: min-content;
   margin: 10px;
-  padding: 10px;
+  margin-right: 2px;
+  margin-left: 2px;
+  padding: 20px;
   text-align: center;
   word-break: inherit;
+}
+
+.petCard:hover {
+  background: cornflowerblue;
+  color: white;
+  box-shadow: 0 5px 25px rgba(255, 58, 44, 0.562);
 }
 .petPic {
   height: 250px;

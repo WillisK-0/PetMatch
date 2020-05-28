@@ -14,21 +14,23 @@
     {{#pets}}
     <div class='petCard'>
         
-        <form method="POST" action="/houstonPets/houstonPets">
+        <form method="POST" action="/houstonPets">
         {{#primary_photo_cropped}}
         
-            <img class='petPic' src="{{medium}}"/>
+            <a href='http://localhost:3000/pet-details/{{id}}'><img class='petPic' src="{{medium}}"/></a>
 
         {{/primary_photo_cropped}}
 
         <p>        
         
-            <label>Name: {{name}}</label> <br>
-            <label>Age: {{age}}</label> <br>
+            <label><strong>Name:</strong> {{name}}</label> <br>
+            <label><strong>Age:</strong> {{age}}</label> <br>
             <input type="hidden" id="type" name="type" value="{{type}}"/>
+            <input type="hidden" id="petId" name="petId" value="{{id}}"/>
+
             
             {{#breeds}}
-            <label>Breed: {{primary}}, Mixed: {{mixed}}</label><br> 
+            <label><strong>Breed:</strong> {{primary}}, <strong>Mixed:</strong> {{mixed}}</label><br> 
             {{/breeds}}
         <p>
         </form>

@@ -16,7 +16,7 @@ router.get("/", (req, res) => {
   res.render("home", user);
 });
 
-router.get("/pet-details", (req, res) => {
+router.get("/pet-details/:id", (req, res) => {
   res.render("petDetails");
 });
 
