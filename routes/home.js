@@ -2,6 +2,10 @@ const express = require("express");
 const router = express();
 const session = require("express-session");
 
+const getAuth = require("../APIfunctions/getAuth");
+const getPets = require("../APIfunctions/getPets");
+const fakeArray = require("../js/details");
+
 router.use(
   session({
     secret: "keyboard cat",
@@ -16,10 +20,31 @@ router.get("/", (req, res) => {
   res.render("home", user);
 });
 
+router.get("/pet-details", (req, res) => {
+
+  getAuth((newToken) => {
+    req.session.tokenType = newToken.tokenType;
+    req.session.token = newToken.token;
+    getPets(newToken.token, newToken.tokenType, (data) => {
+      res.render("petDetails", data);
+    });
+  });
+});
+
+
+//   let animalArray = fakeArray.animals;
+//   // animal[0].attributes.map((result) => {
+//   //   console.log(result);
+//   // });
+//   res.render("petDetails", { animal: animalArray[0] });
+// });
+  
 router.get("/pet-details/:id", (req, res) => {
   let petId = req.params.id;
   res.render("petDetails", { petId: petId });
 });
+// res.render("petDetails");
+// });
 
 router.get("/user", authenticate, (req, res) => {
   let user = req.session.user;

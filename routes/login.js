@@ -74,7 +74,7 @@ router.post("/register", (req, res) => {
         lastname: lastName,
       });
       newUser.save().then((savedUser) => {
-        res.redirect("/log-in");
+        res.redirect("/login");
       });
     } else {
       res.render("register", { message: "Username already exists" });
