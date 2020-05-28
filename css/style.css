@@ -1,3 +1,9 @@
+.body {
+  background-color: rgb(255, 255, 234);
+}
+.title {
+  color: rgb(148, 116, 89);
+}
 .ul {
   list-style-type: none;
   overflow: hidden;
@@ -12,6 +18,7 @@
 .pet-info-cards {
   border: 1px solid #007bff;
   margin-top: 89px;
+  color: rgb(148, 116, 89);
 }
 .nav-bar-container {
   background-color: #007bff;
@@ -23,6 +30,7 @@
 }
 .card-description {
   padding: 15px 15px;
+  color: rgb(148, 116, 89);
 }
 .footer {
   background-color: #007bff;
