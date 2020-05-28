@@ -6,9 +6,13 @@ const mustacheExpress = require("mustache-express");
 
 global.pets = [];
 
-const getAuth = require("./APIfunctions/getAuth");
-const getPets = require("./APIfunctions/getPets");
+// global.token = "";
+// global.tokenType = "";
 
+const getOAuth = require("./APIfunctions/getAuth");
+const getAllPets = require("./APIfunctions/getPets");
+
+console.log(getAllPets);
 const session = require("express-session");
 app.use(express.static("css"));
 app.use(express.static("images"));
@@ -42,31 +46,31 @@ app.use("css/version-1", express.static("css"));
 app.use(express.static("public"));
 
 app.get("/houstonPets", (req, res) => {
-  getPets((response) => {
-    // console.log(JSON.stringify(response.animals[0].name));
-    // console.log(response.animals[0].photos);
-    // console.log(response.animals[1]._links);
-    const petsArray = response.animals.map((animal) => {
-      const photoObject = animal.primary_photo_cropped;
-      const image = photoObject ? photoObject.medium : "sorry";
-      // console.log(image);
-      const placeHolderUrl =
-        animal.type === "Dog"
-          ? "https://i.pinimg.com/originals/aa/91/2d/aa912de6d6fe70b5ccd0c8b9fc7a4f26.jpg"
-          : "https://www.pngkit.com/png/detail/159-1598700_kitty-clipart-anime-cat-cute-cat-clip-art.png";
-      return {
-        ...animal,
-        primary_photo_cropped: photoObject
-          ? photoObject
-          : {
-              medium: placeHolderUrl,
-            },
-      };
+  getOAuth((data) => {
+    getAllPets(data.token, data.tokenType, (response) => {
+      const petsArray = response.animals.map((animal) => {
+        const photoObject = animal.primary_photo_cropped;
+        const image = photoObject ? photoObject.medium : "sorry";
+        //       // console.log(image);
+        const placeHolderUrl =
+          animal.type === "Dog"
+            ? "https://i.pinimg.com/originals/aa/91/2d/aa912de6d6fe70b5ccd0c8b9fc7a4f26.jpg"
+            : "https://www.pngkit.com/png/detail/159-1598700_kitty-clipart-anime-cat-cute-cat-clip-art.png";
+        return {
+          ...animal,
+          primary_photo_cropped: photoObject
+            ? photoObject
+            : {
+                medium: placeHolderUrl,
+              },
+        };
+      });
+      let petInfo = { pets: petsArray };
+      res.render("houstonPets", petInfo);
     });
-    let petInfo = { pets: petsArray };
-    res.render("houstonPets", petInfo);
   });
 });
+// });
 
 // app.use("/houstonPets", houstonPetsRouter);
 app.use("/login", logInRouter);
@@ -157,7 +161,7 @@ let token, tokenType, expires;
 
 //-------------------------
 
-//validate token and fetch pets
+// validate token and fetch pets
 // let makeCall = function () {
 //   if (!expires || expires - new Date().getTime() < 1) {
 //     console.log("new call");
@@ -178,12 +182,12 @@ let token, tokenType, expires;
 // makeCall();
 // btn.addEventListener("click", makeCall, false);
 
-// makeCall();
-// ------------------
+// // makeCall();
+// // ------------------
 
-// getOAuth();
+// // getOAuth();
 
-// getAuth();
+// // getAuth();
 
 app.listen(3000, () => {
   console.log("Server is running...");

@@ -1,12 +1,17 @@
 let express = require("express");
 let router = express.Router();
 let makeCall = require("./getAnimals");
-
+const getAuth = require("../APIfunctions/getAuth");
+const getPets = require("../APIfunctions/getPets");
 // get the api call to pull the pets info before the mustache page renders
 router.get("/", (req, res) => {
-  makeCall();
-
-  res.render("houstonPets", { pets: pets });
+  getAuth((newToken) => {
+    req.session.tokenType = newToken.tokenType;
+    req.session.token = newToken.token;
+    getPets(newToken.token, newToken.tokenType, (data) => {
+      res.render("houstonPets", data);
+    });
+  });
 });
 
 router.post("/houstonPets", (req, res) => {
