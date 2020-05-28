@@ -12,6 +12,7 @@ const getPets = require("./APIfunctions/getPets");
 const session = require("express-session");
 app.use(express.static("css"));
 app.use(express.static("images"));
+app.use(express.static("js"));
 
 // session middleWare
 app.use(

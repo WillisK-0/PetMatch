@@ -1,18 +1,96 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
-
-<head>{{>navTop}}</head>
+<head>
+<meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <!-- OUR CSS -->
+    <link rel='stylesheet' href='/style.css'>
+{{>navTop}}</head>
 
 <body>
 {{> menu}}
 <h1>Pet Details for pet with ID#: {{petId}}</h1>
+<div class="container-fluid">
+    {{#animal}}
+      <!-- pet image & description -->
+      <div class="row pet-details-container">
+        <div class="col-lg-8 pet-image">
+          <img src="https://m.hindustantimes.com/rf/image_size_960x540/HT/p2/2018/05/16/Pictures/_1571873a-58de-11e8-b431-73159b4b09e2.jpg" alt="cute dog" />
+        </div>
+        <div class="col-lg-4 card-description">
+          <h2 class="card-title">Meet {{name}}</h2>
+          <div class="card-body">
+            <p>{{description}}</p>
+            <button type="button" class="btn btn-outline-primary">
+              Adopt Me
+            </button>
+            <button type="button" class="btn btn-outline-primary">
+              Favorite
+            </button>
+            <button type="button" class="btn btn-outline-primary">
+              Donate
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- cards -->
+      <div class="row justify-content-around">
+        <div class="col-lg-5 pet-info-cards">
+          <div class="card-body">
+            <h2 class="card-title">{{name}}</h2>
+            <p class="card-text"> Boxer - Houston, TX</p>
+            <p class="card-text">{{age}} - {{gender}} - {{size}}</p>
+          </div>
+        </div>
+        <div class="col-lg-5 pet-info-cards">
+          <div class="card-body">
+            <h2 class="card-title">About</h2>
+            <p class="card-text">HOUSE-TRAINED: Yes</p>
+            <p class="card-text">{{status}} - {{coat}}</p>
+            <p class="card-text">CONTACT</p>
+          </div>
+        </div>
+      </div>
+    {{/animal}}
 
 {{#animals}}
 {{name}}
 {{/animals}}
 
+</div>
+
+
+
 {{> navBottom}}
+<script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+      integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+      crossorigin="anonymous"
+    ></script>
 </body>
 
 
 </html>
+
