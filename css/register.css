@@ -10,12 +10,6 @@ body {
   }
 }
 
-/* @media screen and (device-width: 320px) and (device-height: 640px) and (-webkit-device-pixel-ratio: 2) {
-    #groupPic {
-      display: none;
-    }
-  } */
-
 @media (max-width: 400px) {
   #groupPic {
     display: none !important;
@@ -37,6 +31,15 @@ body {
   border-radius: 10px;
   min-width: fit-content;
   padding: 10px;
+}
+
+#logInBox input {
+  padding: 3px;
+  margin-top: 5px;
+}
+
+#logInBox button {
+  margin-top: 5px;
 }
 
 .emptyButton {

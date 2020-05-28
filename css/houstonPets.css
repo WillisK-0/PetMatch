@@ -1,0 +1,48 @@
+body {
+  background-color: rgb(255, 255, 234);
+  color: rgb(148, 116, 89);
+  text-align: center;
+}
+
+@media (max-width: 401px) {
+  #banner {
+    width: 100%;
+    padding-top: 5px;
+  }
+}
+
+@media (max-width: 400px) {
+  #banner {
+    display: none !important;
+  }
+}
+
+#displayPetCards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.petCard {
+  border: solid 1px blue;
+  border-radius: 5px;
+  background: rgba(100, 148, 237, 0.062);
+  width: min-content;
+  margin: 10px;
+  margin-right: 2px;
+  margin-left: 2px;
+  padding: 20px;
+  text-align: center;
+  word-break: inherit;
+}
+
+.petCard:hover {
+  background: rgba(100, 148, 237, 0.596);
+  color: white;
+  box-shadow: 0 5px 25px rgba(255, 58, 44, 0.562);
+}
+.petPic {
+  height: 250px;
+  width: 250px;
+}
