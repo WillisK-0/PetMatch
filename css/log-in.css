@@ -48,3 +48,23 @@ body {
 .emptyButton:hover {
   background-color: rgb(43, 114, 245);
 }
+
+#dogWrapper {
+  width: 25%;
+  height: fit-content;
+  margin-right: -500px;
+  margin-top: -439px;
+  position: relative;
+}
+
+#sign {
+  position: absolute;
+}
+
+#guestSign {
+  position: absolute;
+  width: 191px;
+  height: 60px;
+  /* background-color: #f3f2e2; */
+  background-color: red;
+}
