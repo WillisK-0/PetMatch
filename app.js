@@ -9,6 +9,10 @@ global.pets = [];
 const session = require("express-session");
 app.use(express.static("css"));
 app.use(express.static("images"));
+<<<<<<< HEAD
+app.use(express.static("js"));
+=======
+>>>>>>> master
 
 // session middleWare
 app.use(

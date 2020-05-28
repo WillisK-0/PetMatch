@@ -1,0 +1,31 @@
+.ul {
+  list-style-type: none;
+  overflow: hidden;
+  display: inline;
+}
+.li {
+  display: inline;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+.pet-info-cards {
+  border: 1px solid #007bff;
+  margin-top: 89px;
+}
+.nav-bar-container {
+  background-color: #007bff;
+}
+.pet-image img {
+  width: 100%;
+  height: 100%;
+  margin-top: 23px;
+}
+.card-description {
+  padding: 15px 15px;
+}
+.footer {
+  background-color: #007bff;
+
+  margin-top: 25px;
+}
