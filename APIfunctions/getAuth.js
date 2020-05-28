@@ -4,7 +4,7 @@ const secret = "nEBZNLBFzxdlaSNkPNrDafLKKrREtKhSLan6OeRC";
 let data = {};
 let token, tokenType, expires;
 
-let getOAuth = function () {
+let getOAuth = function (callback) {
   return fetch("https://api.petfinder.com/v2/oauth2/token", {
     method: "POST",
     body:
@@ -20,13 +20,13 @@ let getOAuth = function () {
       return resp.json();
     })
     .then(function (data) {
-      console.log("token", data);
+      // console.log("token", data);
 
       //Store token data
       token = data.access_token;
       tokenType = data.token_type;
-      console.log(token, tokenType);
-
+      // console.log(token, tokenType);
+      callback({ tokenType: tokenType, token: token });
       expires = new Date().getTime() + data.expires_in * 1000;
     })
     .catch(function (err) {
