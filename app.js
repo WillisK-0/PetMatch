@@ -48,9 +48,9 @@ app.get("/houstonPets", (req, res) => {
   });
 });
 
-//app.use("/houstonPets", houstonPetsRouter);
-// app.use("/login", logInRouter);
-// app.use("/home", homeRouter);
+// app.use("/houstonPets", houstonPetsRouter);
+app.use("/login", logInRouter);
+app.use("/home", homeRouter);
 
 const fetch = require("node-fetch");
 const key = "fzJGFxrKg3dAbPMgK8AYlsmtK2rKB27lAzmG0hR8ROxJnBro39";
@@ -163,7 +163,7 @@ let token, tokenType, expires;
 
 // getOAuth();
 
-getAuth();
+// getAuth();
 
 app.listen(3000, () => {
   console.log("Server is running...");

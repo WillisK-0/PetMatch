@@ -25,6 +25,8 @@ let getOAuth = function () {
       //Store token data
       token = data.access_token;
       tokenType = data.token_type;
+      console.log(token, tokenType);
+
       expires = new Date().getTime() + data.expires_in * 1000;
     })
     .catch(function (err) {

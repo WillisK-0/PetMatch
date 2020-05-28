@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express();
 const session = require("express-session");
+const getAuth = require("./APIfunctions/getAuth");
+const getPets = require("./APIfunctions/getPets");
 
 router.use(
   session({
@@ -17,6 +19,7 @@ router.get("/", (req, res) => {
 });
 
 router.get("/pet-details", (req, res) => {
+  getAuth();
   res.render("petDetails");
 });
 
