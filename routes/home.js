@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express();
 const session = require("express-session");
+const fakeArray = require("../js/details");
 
 router.use(
   session({
@@ -17,8 +18,14 @@ router.get("/", (req, res) => {
 });
 
 router.get("/pet-details", (req, res) => {
-  res.render("petDetails");
+  let animalArray = fakeArray.animals;
+  // animal[0].attributes.map((result) => {
+  //   console.log(result);
+  // });
+  res.render("petDetails", { animal: animalArray[0] });
 });
+// res.render("petDetails");
+// });
 
 router.get("/user", authenticate, (req, res) => {
   let user = req.session.user;
