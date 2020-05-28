@@ -22,12 +22,12 @@
 {{> menu}}
 <h1 class='title'>Pet Details</h1>
 
-<div class="container-fluid"> }}
-    {{#animal}}
+<div class="container-fluid"> 
+   
       <!-- pet image & description -->
       <div class="row pet-details-container">
         <div class="col-lg-8 pet-image">
-          <img src="https://m.hindustantimes.com/rf/image_size_960x540/HT/p2/2018/05/16/Pictures/_1571873a-58de-11e8-b431-73159b4b09e2.jpg" alt="cute dog" />
+          <img src={{primary_photo_cropped.medium}} alt="cute dog" />
         </div>
         <div class="col-lg-4 card-description">
           <h2 class="card-title">Meet {{name}}</h2>
@@ -51,25 +51,30 @@
         <div class="col-lg-5 pet-info-cards">
           <div class="card-body">
             <h2 class="card-title">{{name}}</h2>
-            <p class="card-text"><b>Breed:</b> Boxer</p>
+            <p class="card-text"><b>Breed:</b> {{breeds.primary}}{{breeds.mixed}}</p>
             <p class="card-text"><b>Age:</b> {{age}}</p>
             <p class="card-text"><b>Gender:</b> {{gender}}</p>
             <p class="card-text"><b>Size:</b> {{size}}</p>
-            <p class="card-text"><b>Pet Id:</b> {{id}}</p>
+            <p class="card-text"><b>Coat:</b> {{coat}}</p>
+            <p class="card-text"><b>Color:</b> {{colors.primary}}</p>
+            
           </div>
         </div>
         <div class="col-lg-5 pet-info-cards">
           <div class="card-body">
             <h2 class="card-title">About</h2>
-            <p class="card-text"><b>HOUSE-TRAINED:</b> Yes</p>
+            <p class="card-text"><b>House-Trained:</b>{{attributes.house_trained}}</p>
+            <p class="card-text"><b>Health:</b>{{attributes.spayed_neutered}}</p>
+            <p class="card-text"><b>Health:</b>{{attributes.secial_needs}}</p>
             <p class="card-text"><b>Status:</b> {{status}}</p>
-            <p class="card-text"><b>Coat:</b> {{coat}}</p>
-            <p class="card-text"><b>Contact:</b> CONTACT</p>
+            <p class="card-text"><b>Contact:</b> {{contact.phone}} - {{contact.email}}</p>
+            <p class="card-text"><b>Location:</b>{{contact.address1}} - {{contact.city}} - {{contact.state}}</p>
+            <p class="card-text"><b>Pet Id:</b> {{id}}</p>
           </div>
         </div>
       </div>
       
-    {{/animal}}
+   
 
 
 </div>
