@@ -54,7 +54,7 @@ body {
   height: fit-content;
   margin-right: -500px;
   margin-top: -439px;
-  position: relative;
+  position: absolute;
 }
 
 #sign {
@@ -65,6 +65,6 @@ body {
   position: absolute;
   width: 191px;
   height: 60px;
-  /* background-color: #f3f2e2; */
-  background-color: red;
+  background-color: #f3f2e2;
+  /* background-color: red; */
 }
