@@ -1,0 +1,24 @@
+body {
+  background-color: rgb(255, 255, 234);
+  color: rgb(148, 116, 89);
+}
+
+#displayPetCards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.petCard {
+  border: solid 3px blue;
+  width: min-content;
+  margin: 10px;
+  padding: 10px;
+  text-align: center;
+  word-break: inherit;
+}
+.petPic {
+  height: 250px;
+  width: 250px;
+}

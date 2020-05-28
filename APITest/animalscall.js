@@ -24,6 +24,7 @@ fetch("https://api.petfinder.com/v2/oauth2/token", {
     data = data_returned;
     console.log("token", data);
 
+    //Return second API call using token
     return fetch(
       "https://api.petfinder.com/v2/animals?organization=" +
         org +
@@ -36,6 +37,12 @@ fetch("https://api.petfinder.com/v2/oauth2/token", {
         },
       }
     );
+  })
+  .then(function (resp) {
+    return resp.json();
+  })
+  .then(function (data) {
+    console.log("pets", data);
   })
   .catch(function (err) {
     console.log("something went wrong", err);
