@@ -28,6 +28,8 @@ const VIEWS_PATH = path.join(__dirname, "/views");
 app.use(express.urlencoded());
 app.use(express.json());
 
+app.use("/log-in", logInRouter);
+app.use("/home", homeRouter);
 app.engine("mustache", mustacheExpress(VIEWS_PATH + "/partials", ".mustache"));
 app.set("views", VIEWS_PATH);
 app.set("view engine", "mustache");
