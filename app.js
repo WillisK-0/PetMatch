@@ -45,6 +45,10 @@ app.set("view engine", "mustache");
 app.use("css/version-1", express.static("css"));
 app.use(express.static("public"));
 
+app.get("/", (res, req) => {
+  res.redirect("/home");
+});
+
 app.get("/houstonPets", (req, res) => {
   getOAuth((data) => {
     getAllPets(data.token, data.tokenType, (response) => {
