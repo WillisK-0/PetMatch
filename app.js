@@ -2,7 +2,7 @@
 const express = require("express");
 const app = express();
 const mustacheExpress = require("mustache-express");
-//const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8080;
 
 global.pets = [];
 
@@ -12,7 +12,6 @@ global.pets = [];
 const getOAuth = require("./APIfunctions/getAuth");
 const getAllPets = require("./APIfunctions/getPets");
 
-console.log(getAllPets);
 const session = require("express-session");
 app.use(express.static("css"));
 app.use(express.static("images"));
@@ -44,6 +43,10 @@ app.set("view engine", "mustache");
 
 app.use("css/version-1", express.static("css"));
 app.use(express.static("public"));
+
+app.get("/", (res, req) => {
+  res.redirect("/home");
+});
 
 app.get("/houstonPets", (req, res) => {
   getOAuth((data) => {
@@ -189,6 +192,6 @@ let token, tokenType, expires;
 
 // // getAuth();
 
-app.listen(3000, () => {
+app.listen(PORT, () => {
   console.log("Server is running...");
 });

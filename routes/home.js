@@ -2,9 +2,10 @@ const express = require("express");
 const router = express();
 const session = require("express-session");
 
-const getAuth = require("../APIfunctions/getAuth");
+const getOAuth = require("../APIfunctions/getAuth");
 const getPets = require("../APIfunctions/getPets");
 const fakeArray = require("../js/details");
+const fetch = require("node-fetch");
 
 router.use(
   session({
@@ -21,8 +22,7 @@ router.get("/", (req, res) => {
 });
 
 router.get("/pet-details", (req, res) => {
-
-  getAuth((newToken) => {
+  getOAuth((newToken) => {
     req.session.tokenType = newToken.tokenType;
     req.session.token = newToken.token;
     getPets(newToken.token, newToken.tokenType, (data) => {
@@ -31,19 +31,52 @@ router.get("/pet-details", (req, res) => {
   });
 });
 
-
+// router.get("/pet-details", (req, res) => {
 //   let animalArray = fakeArray.animals;
 //   // animal[0].attributes.map((result) => {
 //   //   console.log(result);
-//   // });
+//   //});
 //   res.render("petDetails", { animal: animalArray[0] });
 // });
-  
+
 router.get("/pet-details/:id", (req, res) => {
   let petId = req.params.id;
-  res.render("petDetails", { petId: petId });
+  // if (!req.session.token) {
+  getOAuth((newToken) => {
+    req.session.tokenType = newToken.tokenType;
+    req.session.token = newToken.token;
+    fetch(`https://api.petfinder.com/v2/animals/${petId}`, {
+      headers: {
+        Authorization: newToken.tokenType + " " + newToken.token,
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data.animal);
+        res.render("petDetails", data.animal);
+      })
+      .catch((error) => console.log(error));
+  });
+  // }
 });
-// res.render("petDetails");
+
+//
+//
+//
+//
+//
+//
+//         }})
+
+//       }
+//     })
+//   //   .then((r) => r.json())
+//   //   .then((pet) => {
+//   //     console.log(pet);
+//   //   });
+//   // res.render("petDetails", { petId: petId });
+//   })
 // });
 
 router.get("/user", authenticate, (req, res) => {
