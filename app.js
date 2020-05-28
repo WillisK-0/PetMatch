@@ -2,7 +2,7 @@
 const express = require("express");
 const app = express();
 const mustacheExpress = require("mustache-express");
-//const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8080;
 
 global.pets = [];
 
@@ -189,6 +189,6 @@ let token, tokenType, expires;
 
 // // getAuth();
 
-app.listen(3000, () => {
+app.listen(PORT, () => {
   console.log("Server is running...");
 });
