@@ -1,11 +1,13 @@
 <html>
 
 <head>{{> navTop}} 
-<link rel='stylesheet' href='/log-in.css'></head>
+<link rel='stylesheet' href='/log-in.css'>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
 
 <body>
 {{> menu}}
-<img id='groupPic' src='group-animation.png'>
+<img id='groupPic' src='https://waifanimals.org/wp-content/uploads/2017/03/all-animals.svg'>
 <p style=text-align:center;>Sign into your account to view favorites, donate, and more!<p>
 <div id='logInBox'>
 <h1>Sign in</h1>
@@ -15,7 +17,10 @@
 <p>
 <input type='password' placeHolder='Password' name='passWord'> <br>
 <p>
-<button>Sign in</button>
+
+<button class='emptyButton'>Sign in</button>
+<p>{{message}}</p>
+
 </form>
 
 <p>Not a user? <a href='http://localhost:3000/log-in/register'>Click here to register!</a>
@@ -23,6 +28,6 @@
 
 {{> navBottom}}
 </body>
-{{message}}
+
 
 </html>

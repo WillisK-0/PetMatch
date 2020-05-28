@@ -1,0 +1,49 @@
+<html>
+
+
+<head>{{>navTop}}
+<link rel='stylesheet' href='/findMatch.css'>
+</head>
+
+<body>
+{{> menu}}
+<h1>Find Your Match!</h1>
+
+<div id='quiz'>
+    <form method='POST' action='/home/find-match'>
+    <div id='q1'>
+        <h4>Are you looking for a Cat or Dog?</h4>
+        <input type='radio' name='catDog' value='dog'><label id='radioLabel'>Dog</label>
+        <input type='radio' name='catDog' value='cat'><label id='radioLabel'>Cat</label>
+    </div>
+    <div id='q2'>
+        <h4>Would you like to have an indoor or outdoor pet?</h4>
+        <input type='radio' name='indoorOutdoor' value='indoor'><label id='radioLabel'>Indoor</label>
+        <input type='radio' name='indoorOutdoor' value='outdoor'><label id='radioLabel'>Outdoor</label>
+     </div>
+     <div id='q3'>
+        <h4>What size pet would you like?</h4>
+        <input type='radio' name='sml' value='Small'><label id='radioLabel'>Small</label>
+        <input type='radio' name='sml' value='Medium'><label id='radioLabel'>Medium</label>
+        <input type='radio' name='sml' value='Large'><label id='radioLabel'>Large</label>
+    </div>
+    <div id='q4'>
+        <h4>Does your household have any of the following?</h4>
+        <input type='checkbox' name='checks' value='kids' ><label id='radioLabel'>Kids</label>
+        <input type='checkbox' name='checks' value='dog'><label id='radioLabel'>Dog</label>
+        <input type='checkbox' name='checks' value='cat'><label id='radioLabel'>Cat</label>
+
+    </div>
+     <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Find Match!</button>
+    </form>
+    
+</div>
+    <div id='imageWrapper'>
+    <img src='https://waifanimals.org/wp-content/uploads/2017/03/4-animals.svg' id='animalPic'>
+    </div>
+
+{{> navBottom}}
+</body>
+
+
+</html>

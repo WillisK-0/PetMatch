@@ -1,0 +1,39 @@
+PetFinder API for PetMatch app
+
+----------------------------------------
+
+GET request format:
+"Authorization: Bearer {YOUR_ACCESS_TOKEN}" GET https://api.petfinder.com/v2/{CATEGORY}/{ACTION}?{parameter_1}={value_1}&{parameter_2}={value_2}
+
+    - example:
+    GET https://api.petfinder.com/v2/animals?type=dog&page=2
+
+Base URL
+https://api.petfinder.com/v2/
+
+-----------------------------------------
+
+Endpoints List
+https://www.petfinder.com/developers/v2/docs/#get-animals
+
+Get all animals (location default is null, 20 results per page)
+GET https://api.petfinder.com/v2/animals
+
+Get animal by ID
+GET https://api.petfinder.com/v2/animals/{id}
+
+Get animal by Types (returns an array of types, ex: species, color, coat, and gender)
+GET https://api.petfinder.com/v2/types
+
+Get animal by a specific Type
+GET https://api.petfinder.com/v2/types/{type}
+
+Get animal by Breeds
+GET https://api.petfinder.com/v2/types/{type}/breeds
+
+
+Get Organizations (location default is null)
+GET https://api.petfinder.com/v2/organizations
+
+Get Organization by Organization ID
+GET https://api.petfinder.com/v2/organizations/{id}

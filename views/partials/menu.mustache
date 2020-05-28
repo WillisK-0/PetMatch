@@ -22,10 +22,13 @@
           Find A Pet
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Dogs</a>
-          <a class="dropdown-item" href="#">Cats</a>
+          <a class="dropdown-item" href="http://localhost:3000/home/dogs">Dogs</a>
+          <a class="dropdown-item" href="http://localhost:3000/home/cats">Cats</a>
+          <a class="dropdown-item" href="http://localhost:3000/houstonPets">Both</a>
+
+
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Find My Match!</a>
+          <a class="dropdown-item" href="http://localhost:3000/home/find-match">Find My Match!</a>
         </div>
       </li>
        <li class="nav-item dropdown">
@@ -33,7 +36,7 @@
           User
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="http://localhost:3000/home/user">{{#user}} Hello, {{user}} {{/user}}</a>
+          <a class="dropdown-item" href="http://localhost:3000/home/user">{{#firstName}} Hello, {{firstName}} {{/firstName}}</a>
           <a class="dropdown-item" href="http://localhost:3000/log-in">Sign in</a>
           <form method='POST' action='/log-in/sign-out' id='form'>
           <a class="dropdown-item" onclick="document.getElementById('form').submit()"href="#">Sign out</a>

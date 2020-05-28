@@ -1,19 +1,29 @@
 <html>
 
-<head>{{> navTop}}</head>
+<head>
+{{> navTop}}
+<link rel='stylesheet' href='/register.css'>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
 
 <body>
 {{> menu}}
 
-
-<h1>Register New User</h1>
+<img id='groupPic' src='https://waifanimals.org/wp-content/uploads/2017/03/cat-and-dog-hero-2.svg'>
+<p>Register as a user to make a favorites list, apply to adopt, or donate to help our cause ♡<p>
+<div id='logInBox'>
+<h4>Register New User</h4>
 
 <form method='POST' action='/log-in/register'>
 <input type='text' placeHolder='Username' name='userName'>
 <input type='password' placeHolder='Password' name='passWord'>
+<input type='text' placeHolder='First Name' name='firstName'>
+<input type='text' placeHolder='Last Name' name='lastName'>
 <button>Submit</button>
 </form>
 {{message}}
+</div>
+
 
 
 
