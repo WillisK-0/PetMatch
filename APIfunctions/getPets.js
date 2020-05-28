@@ -4,7 +4,7 @@ const fetch = require("node-fetch");
 // let data = {};
 // let token, tokenType, expires;
 
-let getPets = function (token, tokenType, callback) {
+let getAllPets = function (token, tokenType, callback) {
   fetch("https://api.petfinder.com/v2/animals?location=Houston, TX", {
     headers: {
       Authorization: tokenType + " " + token,
@@ -16,4 +16,4 @@ let getPets = function (token, tokenType, callback) {
     .catch((error) => console.log(error));
 };
 
-module.exports = getPets;
+module.exports = getAllPets;
