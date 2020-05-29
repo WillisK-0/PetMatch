@@ -12,7 +12,6 @@ global.pets = [];
 const getOAuth = require("./APIfunctions/getAuth");
 const getAllPets = require("./APIfunctions/getPets");
 
-console.log(getAllPets);
 const session = require("express-session");
 app.use(express.static("css"));
 app.use(express.static("images"));
@@ -193,6 +192,6 @@ let token, tokenType, expires;
 
 // // getAuth();
 
-app.listen(PORT, () => {
+app.listen(3000, () => {
   console.log("Server is running...");
 });
