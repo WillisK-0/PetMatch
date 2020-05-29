@@ -20,14 +20,14 @@
 
 <body style='background-color: rgb(255, 255, 234)'>
 {{> menu}}
-<h1 class='title'>Pet Details</h1>
 
 <div class="container-fluid"> 
-   
+   <h1 class='title'>Pet Details</h1>
+
       <!-- pet image & description -->
       <div class="row pet-details-container">
         <div class="col-lg-8 pet-image">
-          <img src={{primary_photo_cropped.medium}} alt="cute dog" />
+          <img src="{{primary_photo_cropped.medium}}" alt="cute dog" />
         </div>
         <div class="col-lg-4 card-description">
           <h2 class="card-title">Meet {{name}}</h2>
