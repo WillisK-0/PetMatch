@@ -51,20 +51,30 @@ body {
 
 #dogWrapper {
   width: 25%;
-  height: fit-content;
+  height: 25%;
   margin-right: -500px;
   margin-top: -439px;
   position: absolute;
+  left: 5%;
+  border: none;
 }
 
 #sign {
   position: absolute;
+  width: 50%;
+  top: -49;
+  left: 25%;
 }
 
 #guestSign {
   position: absolute;
+  text-align: center;
+  bottom: 35%;
+  left: 10%;
   width: 191px;
-  height: 60px;
+  height: fit-content;
+  padding: 15px;
   background-color: #f3f2e2;
+  border: solid 1px red;
   /* background-color: red; */
 }

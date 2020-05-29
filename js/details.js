@@ -9,26 +9,25 @@ const fakeArray = require("../js/details");
 router.get("/petDetails", (req, res) => {
   getOAuth((data) => {
     getAllPets(data.token, data.tokenType, (response) => {
+      console.log("is this real life?");
+
       const petsArray = response.animals.map((animal) => {
         const photoObject = animal.primary_photo_cropped;
-        const image = photoObject ? photoObject.medium : "sorry";
-        //       // console.log(image);
         const placeHolderUrl =
           animal.type === "Dog"
             ? "https://i.pinimg.com/originals/aa/91/2d/aa912de6d6fe70b5ccd0c8b9fc7a4f26.jpg"
             : "https://www.pngkit.com/png/detail/159-1598700_kitty-clipart-anime-cat-cute-cat-clip-art.png";
+        const image = photoObject
+          ? photoObject.medium
+          : { medium: placeHolderUrl };
+        console.log("image here------>", image);
+
         return {
           ...animal,
-          primary_photo_cropped: photoObject
-            ? photoObject
-            : {
-                medium: placeHolderUrl,
-              },
+          primary_photo_cropped: image,
         };
       });
-      // getOAuth((data) => {
 
-      // });
       let petInfo = { pets: petsArray };
       res.render("petDetails", petInfo);
     });

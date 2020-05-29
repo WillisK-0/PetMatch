@@ -53,8 +53,27 @@ router.get("/pet-details/:id", (req, res) => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data.animal);
-        res.render("petDetails", data.animal);
+        const animal = data.animal;
+        console.log(animal);
+        const photoObject = animal.primary_photo_cropped;
+        const placeHolderUrl =
+          animal.type === "Dog"
+            ? "https://i.pinimg.com/originals/aa/91/2d/aa912de6d6fe70b5ccd0c8b9fc7a4f26.jpg"
+            : "https://www.pngkit.com/png/detail/159-1598700_kitty-clipart-anime-cat-cute-cat-clip-art.png";
+        const image = photoObject
+          ? photoObject.medium
+          : { medium: placeHolderUrl };
+
+        const description = animal.description
+          ? animal.description
+          : "Sorry our furry baby does not have a story yet. Come back soon for an update :)";
+
+        const newAnimal = {
+          ...animal,
+          primary_photo_cropped: image,
+          description: description,
+        };
+        res.render("petDetails", newAnimal);
       })
       .catch((error) => console.log(error));
   });
