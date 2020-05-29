@@ -26,7 +26,7 @@ app.use(
   })
 );
 
-// const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8080;
 const logInRouter = require("./routes/login");
 const homeRouter = require("./routes/home");
 const path = require("path");
@@ -192,6 +192,6 @@ let token, tokenType, expires;
 
 // // getAuth();
 
-app.listen(3000, () => {
+app.listen(PORT, () => {
   console.log("Server is running...");
 });
