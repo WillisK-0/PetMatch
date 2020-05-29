@@ -69,7 +69,7 @@
             <p class="card-text"><b>Special Needs:</b> {{attributes.secial_needs}}</p>
             <p class="card-text"><b>Status:</b> {{status}}</p>
             <p class="card-text"><b>Contact:</b> {{contact.phone}} - {{contact.email}}</p>
-            <p class="card-text"><b>Location:</b> {{contact.address1}} - {{contact.city}} - {{contact.state}}</p>
+            <p class="card-text"><b>Location:</b> {{contact.address.address1}} - {{contact.address.city}} - {{contact.address.state}}</p>
             <p class="card-text"><b>Pet Id:</b> {{id}}</p>
           </div>
         </div>
@@ -82,7 +82,7 @@
 
 
 
-<script
+{{! <script
       src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
       integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
       crossorigin="anonymous"
@@ -96,8 +96,8 @@
       src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
       integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
       crossorigin="anonymous"
-    ></script>
-{{> navBottom}}
+    ></script> }}
+{{>navBottom}}
 
 </body>
 
