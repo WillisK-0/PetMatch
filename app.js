@@ -26,7 +26,7 @@ app.use(
   })
 );
 
-const PORT = process.env.PORT || 8080;
+// const PORT = process.env.PORT || 8080;
 const logInRouter = require("./routes/login");
 const homeRouter = require("./routes/home");
 const path = require("path");
