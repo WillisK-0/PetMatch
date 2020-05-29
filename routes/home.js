@@ -108,7 +108,34 @@ router.get("/favorites", authenticate, (req, res) => {
 });
 
 router.get("/dogs", (req, res) => {
-  res.render("dogs");
+  getOAuth((newToken) => {
+    req.session.tokenType = newToken.tokenType;
+    req.session.token = newToken.token;
+    getPets(newToken.token, newToken.tokenType, (data) => {
+      let dogs = data.animals.filter((animal) => {
+        return animal.type === "Dog";
+      });
+      (dogs = dogs.map((dog) => {
+        const photoObject = dog.primary_photo_cropped;
+        const image = photoObject ? photoObject.medium : "sorry";
+        const placeHolderUrl =
+          "https://i.pinimg.com/originals/aa/91/2d/aa912de6d6fe70b5ccd0c8b9fc7a4f26.jpg";
+        return {
+          ...dog,
+          primary_photo_cropped: photoObject
+            ? photoObject
+            : {
+                medium: placeHolderUrl,
+              },
+        };
+      })),
+        console.log(dogs);
+
+      // let dogs = []
+
+      res.render("dogs", { dogs: dogs });
+    });
+  });
 });
 
 router.get("/find-match", (req, res) => {
@@ -127,7 +154,34 @@ router.post("/find-match", (req, res) => {
 });
 
 router.get("/cats", (req, res) => {
-  res.render("cats");
+  getOAuth((newToken) => {
+    req.session.tokenType = newToken.tokenType;
+    req.session.token = newToken.token;
+    getPets(newToken.token, newToken.tokenType, (data) => {
+      let cats = data.animals.filter((animal) => {
+        return animal.type === "Cat";
+      });
+      (cats = cats.map((cat) => {
+        const photoObject = cat.primary_photo_cropped;
+        const image = photoObject ? photoObject.medium : "sorry";
+        const placeHolderUrl =
+          "https://www.pngkit.com/png/detail/159-1598700_kitty-clipart-anime-cat-cute-cat-clip-art.png";
+        return {
+          ...cat,
+          primary_photo_cropped: photoObject
+            ? photoObject
+            : {
+                medium: placeHolderUrl,
+              },
+        };
+      })),
+        console.log(cats);
+
+      // let dogs = []
+
+      res.render("cats", { cats: cats });
+    });
+  });
 });
 
 function authenticate(req, res, next) {
