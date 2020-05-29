@@ -60,14 +60,12 @@ router.get("/pet-details/:id", (req, res) => {
           animal.type === "Dog"
             ? "https://i.pinimg.com/originals/aa/91/2d/aa912de6d6fe70b5ccd0c8b9fc7a4f26.jpg"
             : "https://www.pngkit.com/png/detail/159-1598700_kitty-clipart-anime-cat-cute-cat-clip-art.png";
-        const image = photoObject
-          ? photoObject.medium
-          : { medium: placeHolderUrl };
+        const image = photoObject ? photoObject.medium : placeHolderUrl;
 
         const description = animal.description
           ? animal.description
           : "Sorry our furry baby does not have a story yet. Come back soon for an update :)";
-
+        console.log(image);
         const newAnimal = {
           ...animal,
           primary_photo_cropped: image,
